@@ -1,11 +1,11 @@
+from langchain.schema.runnable import RunnableLambda, RunnablePassthrough
 from langchain.prompts import PromptTemplate
-from langchain.schema.runnable import RunnablePassthrough
 from langchain_groq import ChatGroq
 from .config import GROQ_API_KEY
-
-def build_rag_chain(retriever):
-    def format_docs(docs):
-        return "\n\n".join([d.page_content for d in docs])
+from .retriever import RerankRetriever
+def build_rag_chain(retriever: RerankRetriever):
+    retriever_runnable = RunnableLambda(lambda question: retriever.get_relevant_documents(question))
+    format_docs_runnable = RunnableLambda(lambda docs: "\n\n".join([d.page_content for d in docs]))
 
     prompt_template = """Answer the following question based on the provided context.
 
@@ -24,4 +24,7 @@ Answer: """
         groq_api_key=GROQ_API_KEY
     )
 
-    return {"context": retriever | format_docs, "question": RunnablePassthrough()} | prompt | llm
+    return {
+        "context": retriever_runnable | format_docs_runnable,
+        "question": RunnablePassthrough()
+    } | prompt | llm
