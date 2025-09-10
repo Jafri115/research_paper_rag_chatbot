@@ -2,7 +2,7 @@ import os
 import kagglehub
 from .ingestion import load_data_subset, preprocess_dataframe, df_to_documents
 from .vector_store import build_or_load_vectorstore
-from .retriever import get_retriever
+from .retriever import build_advanced_retriever
 from .rag_pipeline import build_rag_chain
 from .config import DATA_PATH
 import shutil 
@@ -43,9 +43,24 @@ def main():
     dataset_file = download_dataset()
     df = load_data_subset(dataset_file, num_records=50000)
     df = preprocess_dataframe(df)
-    documents = df_to_documents(df)
-    vectorstore = build_or_load_vectorstore(documents)
-    retriever = get_retriever(vectorstore)
+    documents = df_to_documents(df, lowercase=False, remove_stopwords=False)
+    vectorstore = build_or_load_vectorstore(
+        documents,
+        force_rebuild=False,
+        chunk_method="semantic",  # fallback to recursive if semantic splitter unavailable
+        chunk_size=800,
+        chunk_overlap=120
+    )
+    retriever = build_advanced_retriever(
+        vectorstore,
+        base_k=16,
+        rerank_k=6,
+        primary_category=None,
+        year_min=None,
+        year_max=None,
+        dynamic=True,
+        use_rerank=True,
+    )
     rag_chain = build_rag_chain(retriever)
     run_sample_queries(rag_chain)
 
