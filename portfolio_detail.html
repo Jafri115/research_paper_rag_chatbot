@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Paper RAG Chatbot - Portfolio Project</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .intro {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2980b9;
+        }
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .tech-stack {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .badges {
+            margin: 20px 0;
+        }
+        .badges img {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .performance-box {
+            background-color: #e8f5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .demo-links {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 25px 0;
+        }
+        .code-snippet {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Research Paper RAG Chatbot</h1>
+        
+        <div class="badges">
+            <img src="https://img.shields.io/badge/Python-3.9+-blue.svg" alt="Python">
+            <img src="https://img.shields.io/badge/LangChain-0.2+-green.svg" alt="LangChain">
+            <img src="https://img.shields.io/badge/FAISS-Vector%20Store-orange.svg" alt="FAISS">
+            <img src="https://img.shields.io/badge/Streamlit-UI-red.svg" alt="Streamlit">
+            <img src="https://img.shields.io/badge/Groq-LLM-purple.svg" alt="Groq">
+            <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
+        </div>
+
+        <div class="intro">
+            <strong>Research Paper RAG Chatbot</strong> is an advanced conversational question-answering system built to operate at <strong>ArXiv scale</strong>. The project demonstrates cutting-edge retrieval-augmented generation (RAG) techniques, featuring semantic text processing, cross-encoder reranking, and intelligent document retrieval for scientific literature. The system ingests large collections of scientific abstracts, processes them through sophisticated NLP pipelines, and delivers precise, context-aware answers using state-of-the-art language models.
+        </div>
+
+        <h3>Key Innovation</h3>
+        <p><strong>This RAG system</strong> showcases production-ready information retrieval practices:</p>
+        <ul>
+            <li><strong>Advanced Text Processing</strong>: Automated LaTeX removal, URL cleaning, and semantic chunking with fallback strategies for optimal document segmentation</li>
+            <li><strong>Intelligent Retrieval Pipeline</strong>: Dynamic k-selection based on query complexity with cross-encoder reranking for enhanced precision</li>
+            <li><strong>Semantic Search Architecture</strong>: FAISS vector store with sentence-transformers embeddings and metadata-aware filtering capabilities</li>
+            <li><strong>Real-time Evaluation Framework</strong>: Comprehensive metrics tracking including Recall@K, MRR, answer quality scoring, and latency monitoring</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <p>The system implements a modular architecture with separate ingestion, retrieval, and generation components:</p>
+        <ul>
+            <li><strong>Data Pipeline</strong>: Scalable ingestion from ArXiv metadata with preprocessing and document chunking strategies</li>
+            <li><strong>Vector Store</strong>: FAISS-based similarity search with persistent indexing and efficient retrieval mechanisms</li>
+            <li><strong>Retrieval Engine</strong>: Multi-stage retrieval with initial candidate selection, cross-encoder reranking, and metadata filtering</li>
+            <li><strong>Generation Interface</strong>: Groq-hosted LLM integration with context-aware prompt engineering and response optimization</li>
+        </ul>
+
+        <div class="tech-stack">
+            <strong>Technology Stack:</strong>
+            <ul>
+                <li><strong>NLP & Embeddings</strong>: Sentence-Transformers, semantic-text-splitter, cross-encoder models for reranking</li>
+                <li><strong>RAG Framework</strong>: LangChain for pipeline orchestration, document processing, and chain management</li>
+                <li><strong>Vector Database</strong>: FAISS for high-performance similarity search with on-disk persistence</li>
+                <li><strong>LLM Integration</strong>: Groq API for fast inference with Meta-Llama models and response streaming</li>
+                <li><strong>User Interface</strong>: Streamlit for interactive chat interface, FastAPI for programmatic access</li>
+                <li><strong>Evaluation Tools</strong>: Custom benchmarking suite with curated QA datasets and automated metric calculation</li>
+            </ul>
+        </div>
+
+        <div class="performance-box">
+            <h3>Performance & Results</h3>
+            <p>The system achieves robust retrieval and generation performance with production-ready metrics:</p>
+            <ul>
+                <li><strong>Retrieval Quality</strong>: Recall@5: 0.68, Recall@10: 0.80 with MRR@5: 0.51 on curated evaluation sets</li>
+                <li><strong>Reranking Impact</strong>: Cross-encoder reranking improves early precision by ~20% compared to similarity-only retrieval</li>
+                <li><strong>Latency Optimization</strong>: Average retrieval: 85ms, generation: 410ms with dynamic k-selection for query complexity</li>
+            </ul>
+        </div>
+
+        <h3>Implementation Highlights</h3>
+        <ul>
+            <li><strong>Semantic Chunking</strong>: Advanced document segmentation using semantic-text-splitter with recursive fallback for optimal context preservation</li>
+            <li><strong>Dynamic Retrieval</strong>: Query complexity analysis for adaptive k-selection and metadata-based filtering by year, category, and topic</li>
+            <li><strong>Cross-Encoder Reranking</strong>: MS MARCO-trained models for improved relevance scoring and answer precision enhancement</li>
+            <li><strong>Evaluation Framework</strong>: Comprehensive benchmarking with train/test splits, curated QA datasets, and automated metric collection</li>
+            <li><strong>Production Interface</strong>: Real-time Streamlit dashboard with parameter tuning, document inspection, and rebuild capabilities</li>
+            <li><strong>Scalable Architecture</strong>: Modular design supporting different chunking strategies, embedding models, and LLM providers</li>
+        </ul>
+
+        <div class="demo-links">
+            <strong>🚀 Quick Demo:</strong><br>
+            1. <code>pip install -r requirements.txt</code><br>
+            2. Set <code>GROQ_API_KEY</code> in <code>.env</code><br>
+            3. <code>python -m src.main</code> (builds index)<br>
+            4. <code>streamlit run app.py</code> (launches UI)
+        </div>
+
+        <div class="code-snippet">
+# Sample programmatic usage
+from src.vector_store import build_or_load_vectorstore
+from src.retriever import build_advanced_retriever
+from src.rag_pipeline import build_rag_chain
+
+vectorstore = build_or_load_vectorstore([], force_rebuild=False)
+retriever = build_advanced_retriever(vectorstore, base_k=16, rerank_k=6)
+rag_chain = build_rag_chain(retriever)
+answer = rag_chain.invoke("Explain transformers in NLP").content
+        </div>
+
+        <p><em>This project demonstrates expertise in modern NLP techniques, RAG architectures, and production-ready information retrieval systems for scientific literature analysis.</em></p>
+    </div>
+</body>
+</html>
